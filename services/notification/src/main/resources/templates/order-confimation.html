@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 24px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 6px;
+        }
+        .header {
+            color: #1565c0;
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+        .content {
+            font-size: 14px;
+            color: #333333;
+        }
+        .details {
+            margin-top: 16px;
+        }
+        .details p {
+            margin: 6px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            font-size: 13px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f2f5;
+        }
+        .footer {
+            margin-top: 24px;
+            font-size: 12px;
+            color: #777777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        Order Confirmed 📦
+    </div>
+
+    <div class="content">
+        <p>Hello <strong th:text="${customerName}">Customer</strong>,</p>
+
+        <p>Your order has been successfully confirmed. Below are the details:</p>
+
+        <div class="details">
+            <p><strong>Order Reference:</strong>
+                <span th:text="${reference}"></span>
+            </p>
+            <p><strong>Total Amount:</strong>
+                ₹<span th:text="${amount}"></span>
+            </p>
+        </div>
+
+        <!-- Product List -->
+        <table>
+            <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.name}">Product Name</td>
+                <td th:text="${product.quantity}">1</td>
+                <td>
+                    ₹<span th:text="${product.price}">0.00</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Thank you for shopping with us!</p>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Your Company Name. All rights reserved.</p>
+    </div>
+</div>
+
+</body>
+</html>

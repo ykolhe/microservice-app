@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://alibou:alibou@localhost:27018/customer?authSource=admin
+
+server:
+  port: 8090

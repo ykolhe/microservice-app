@@ -1,0 +1,21 @@
+server:
+  port: 8888
+
+spring:
+  profiles:
+    active: native   # use local configuration
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/configurations
+
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+

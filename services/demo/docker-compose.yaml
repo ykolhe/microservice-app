@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  mongodb:
+    build:
+      context: mongodb
+      args:
+        DOCKER_ARTIFACTORY: ${DOCKER_ARTIFACTORY}
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    hostname: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: techtutor
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/mongodb
+    networks:
+      - my_network
+
+volumes:
+  mongodb_data:
+
+networks:
+  my_network:
